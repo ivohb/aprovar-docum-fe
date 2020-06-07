@@ -1,0 +1,3 @@
+
+Internacionalizar:
+- Em ???.module.ts, acrescentar : TranslateModule.forChild() na sseção import

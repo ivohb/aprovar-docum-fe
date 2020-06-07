@@ -1,0 +1,30 @@
+<ion-header class="page-header" >
+  <ion-buttons> 
+    <ion-button  (click)="voltar()" > 
+      <ion-icon  slot="start" name="arrow-back"></ion-icon>
+    </ion-button>
+    <ion-title>{{'HELP'|translate}}</ion-title>    
+  </ion-buttons>
+</ion-header>
+
+<ion-content ion-padding >
+  <div class="page-content" >
+    <ion-card class="imagem150">
+      <img src="/assets/img/documentacao.png" alt=""/>
+      <ion-card-header> 
+        <ion-card-title class="titulo">{{'APP_OBJETIVO'|translate}}</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  
+    <ion-card-content class="documentacao">
+      <p>
+        Utilizando esse aplicativo você pode:<br/>
+        1) - Consultar e aprovar documentos do tpo nota de entrada sem pedido de compras;<br/>
+        2) - Consultar e aprovar pedidos de compras;<br/>
+        3) - Consultar e aprovar titulos a pagar gerados pelo financeiro<br/>
+        4) - Efetuar os cadastros básicos, para o funcionamento do APP<br/>
+      </p>
+    </ion-card-content>
+  
+  </div>
+</ion-content>

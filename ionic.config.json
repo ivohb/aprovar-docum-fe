@@ -1,5 +1,7 @@
 {
-  "name": "aprovar-docum-fe",
-  "integrations": {},
+  "name": "AprovarDocum",
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

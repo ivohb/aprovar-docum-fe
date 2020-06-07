@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+      <ion-title>{{ 'PROFILE' | translate }}</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="profile"  >
+  
+  <div >
+    <img class="circulo" [src]="usuario?.imageUrl || 'assets/img/avatar_user.png' "/>    
+  </div> 
+
+  <div class="dados">
+    <p class="negrito">{{usuario?.nome}}</p>
+    <p >{{usuario?.cpf}}</p>
+    <p >{{usuario?.email}}</p>
+  </div>
+
+</ion-content>

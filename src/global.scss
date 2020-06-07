@@ -24,3 +24,91 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+ 
+.link  {
+    text-decoration: underline; color: #3e70db;
+}
+
+
+.footer {
+    border: solid 1px #18208b; font-size: 20px; 
+    font-family: 'Times New Roman', Times, serif;
+    padding-bottom: 5px; padding-left: 20px;
+    background-color: #72B8A7;
+}
+
+
+.titulo {
+    text-align: center; color: #221D5F;
+    font-size: 20px; font-family: cursive;
+  }
+
+.dados {
+    padding: 10px;
+}
+
+.espaco-horiz {
+    padding-left: 20px;
+}
+
+.espaco-vertic {
+    padding-top: 10px;
+}
+
+.caixa {
+    font-weight: 600; 
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.label {
+    font-family: fantasy; font-size: 14px; 
+}
+
+.imagem150 img {
+    width: 150px;  height: 150px; align-self: center;  margin: auto;
+    display: block;  overflow: hidden;  
+}
+
+.imagem200 img {
+    width: 200px;  height: 200px; align-self: center;  margin: auto;
+    display: block;  overflow: hidden;  
+}
+
+.page-cont {
+    background-color: #fff;
+    &::after {
+    content: "";
+    background: url("/assets/img/page_content.jpg") no-repeat;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: 0;
+    }
+}
+
+.page-header {
+    background: url("/assets/img/page_header.png") repeat;
+    height: 7%; 
+    width: 100%;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20-x; font-weight: bold; color: #fff;    
+}
+
+.page-content {
+    background: url("/assets/img/page_content.jpg") no-repeat;
+    height: 93%;
+    width: 100%;
+    padding-top: 10px;
+}
+
+.button {
+    padding-top: 15px;
+    min-height: 40px;
+}
+
+.title-header {
+    padding-top: 20px;
+}

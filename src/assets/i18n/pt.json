@@ -1,0 +1,30 @@
+{
+  "API_DOCUMENTACAO": "API Documentação",
+  "APP_OBJETIVO": "Aprovação de documento",
+  "AVISO": "Aviso",
+  "BARRA": "Codigo de barras",
+  "CAMPO_OBRIGATORIO": "Campo obrigatório",
+  "CODIGO": "Código",
+  "CPF": "C.P.F.",
+  "EMAIL": "Email",
+  "EMAIL_ENVIADO": "Uma nova senha foi enviada no seu email",
+  "ENTRAR": "Entrar",
+  "ENVIAR": "Enviar",
+  "ERRO_VALIDACAO": "Erro de validação",
+  "ERRO401": "Erro 401: usuário e/ou senha inválidos",
+  "ERRO422": "Erro 422: Validação",
+  "FORGOT": "Forgot",
+  "HELP": "Documentação",
+  "HOME": "Home",
+  "IDENTIFICACAO": "Identificação",
+  "LOGIN": "Login",
+  "OPCAO_SELECIONE": "Selecione uma opção do Menu",
+  "OPERACAO_SUCESSO": "Operação efetuada com sucesso",
+  "PROFILE": "Profile",
+  "REC_SENHA": "Recuperar senha",
+  "SENHA": "Senha",
+  "SUCESSO": "Sucesso",
+  "WELCAME_APP": "Bem vindo ao APP de aprovação de documentos "
+    
+} 
+  

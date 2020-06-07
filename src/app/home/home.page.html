@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ 'HOME' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+  
+<ion-content ion-padding>
+  <ion-card class="aprovar-docum">
+    <img src="/assets/img/aprovar_docum.png" alt=""/>
+    <ion-card-header class="titulo">
+      <ion-card-title>{{ 'WELCAME_APP' | translate }}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <div class="ion-padding-top ion-text-center anim01" >
+    {{ 'OPCAO_SELECIONE' | translate }}
+  </div>
+
+  <br/>
+
+  <ion-button class="ion-text-capitalize link" (click)="help()" fill="clear"> 
+    <ion-icon slot="start" color="medium" name="book"></ion-icon>
+    {{ 'API_DOCUMENTACAO' | translate }}
+  </ion-button>
+
+  <br/>
+  
+  <ion-button class="ion-text-capitalize link" (click)="profile()" fill="clear"> 
+    <ion-icon slot="start" color="medium" name="md-contact"></ion-icon>
+    {{ 'PROFILE' | translate }}
+  </ion-button>
+
+  
+
+</ion-content>
+
+<ion-footer class="footer">  
+  <ion-icon slot="start" name="mail"></ion-icon>
+  <ion-label class="email">ivohb.me@gmail.com</ion-label><br/>
+  <ion-icon slot="start"  name="phone-portrait"></ion-icon>
+  <ion-label class="fone">(11)94179-6692</ion-label>
+</ion-footer>

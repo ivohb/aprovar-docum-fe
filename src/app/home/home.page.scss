@@ -1,0 +1,61 @@
+.aprovar-docum img {
+  width: 200px;
+  height: 200px;
+  align-self: center;
+  margin: auto;
+  display: block;
+  overflow: hidden;
+}
+
+.titulo {
+  text-align: center; font-family: 'Times New Roman', Times, serif;
+}
+
+.email {
+  color: #18208b; padding-left: 30px;
+}
+.fone {
+  color: #b60e0e; padding-left: 30px;
+}
+
+.selecione {
+  text-align: center; color: #221D5F; padding-top: 30px;
+  font-size: 20px; font-family: 'Times New Roman', Times, serif;
+}
+
+@keyframes anim01 {
+  0% {
+    transform:rotate(0);
+    color: rgb(6, 139, 51);
+  }
+  25% {
+    transform:rotate(0deg);
+    color: rgb(240, 10, 10);
+  }
+  50% {
+    transform:rotate(0);
+    color: rgb(148, 7, 94);
+  }
+  75% {
+    transform:rotate(-0deg);
+  }
+  100% {
+    transform:rotate(0);
+    color: rgb(40, 16, 175);
+  }
+}
+
+.anim010 {
+ transition: .5s; 
+}
+
+.anim01 {
+  color: #221D5F;
+  animation-name: anim01;
+  animation-delay: 1s;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: 5;
+  
+}
+

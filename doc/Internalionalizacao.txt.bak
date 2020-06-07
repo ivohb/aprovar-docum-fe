@@ -1,0 +1,223 @@
+
+https://ionicframework.com/docs/v3/developer-resources/ng2-translate/
+
+npm install @ngx-translate/core @ngx-translate/http-loader --save
+
+import {BrowserModule} from '@angular/platform-browser';
+import {ErrorHandler, NgModule} from '@angular/core';
+import {IonicApp, IonicErrorHandler, IonicModule, Platform} from 'ionic-angular';
+import {SplashScreen} from '@ionic-native/splash-screen';
+import {StatusBar} from '@ionic-native/status-bar';
+
+import {MyApp} from './app.component';
+import {Globalization} from "@ionic-native/globalization";
+import {TranslateModule} from "@ngx-translate/core";
+import {HomeModule} from "../pages/home/home.module";
+
+@NgModule({
+    declarations: [
+        MyApp
+    ],
+    imports: [
+        BrowserModule,
+        TranslateModule.forRoot(),
+        IonicModule.forRoot(MyApp),
+        HomeModule
+    ],
+    bootstrap: [IonicApp],
+    entryComponents: [
+        MyApp
+    ],
+    providers: [
+        StatusBar,
+        SplashScreen,
+        {provide: ErrorHandler, useClass: IonicErrorHandler},
+        Globalization
+    ]
+})
+export class AppModule { }
+
+view rawapp.module.ts hosted with ? by GitHub
+
+import {BrowserModule} from '@angular/platform-browser';
+import {ErrorHandler, NgModule} from '@angular/core';
+import {IonicApp, IonicErrorHandler, IonicModule, Platform} from 'ionic-angular';
+import {SplashScreen} from '@ionic-native/splash-screen';
+import {StatusBar} from '@ionic-native/status-bar';
+
+import {MyApp} from './app.component';
+import {Globalization} from "@ionic-native/globalization";
+import {TranslateModule} from "@ngx-translate/core";
+import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HomeModule} from "../pages/home/home.module";
+
+export function createTranslateLoader(http: HttpClient) {
+    return new TranslateHttpLoader(http, './assets/i18n/','.json');
+}
+
+@NgModule({
+    declarations: [
+        MyApp
+    ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: (createTranslateLoader),
+                deps: [HttpClient]
+            }
+        }),
+        IonicModule.forRoot(MyApp),
+        HomeModule
+    ],
+    bootstrap: [IonicApp],
+    entryComponents: [
+        MyApp
+    ],
+    providers: [
+        StatusBar,
+        SplashScreen,
+        {provide: ErrorHandler, useClass: IonicErrorHandler},
+        Globalization
+    ]
+})
+export class AppModule { }
+view rawapp.module.ts hosted with ? by GitHub
+
+
+
+import {BrowserModule} from '@angular/platform-browser';
+import {ErrorHandler, NgModule} from '@angular/core';
+import {IonicApp, IonicErrorHandler, IonicModule, Platform} from 'ionic-angular';
+import {SplashScreen} from '@ionic-native/splash-screen';
+import {StatusBar} from '@ionic-native/status-bar';
+
+import {MyApp} from './app.component';
+import {Globalization} from "@ionic-native/globalization";
+import {TranslateModule} from "@ngx-translate/core";
+import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HomeModule} from "../pages/home/home.module";
+
+export function createTranslateLoader(http: HttpClient) {
+    return new TranslateHttpLoader(http, './assets/i18n/','.json');
+}
+
+export const DEFAULT_LANGUAGE = 'en-us';
+
+@NgModule({
+    declarations: [
+        MyApp
+    ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: (createTranslateLoader),
+                deps: [HttpClient]
+            }
+        }),
+        IonicModule.forRoot(MyApp),
+        HomeModule
+    ],
+    bootstrap: [IonicApp],
+    entryComponents: [
+        MyApp
+    ],
+    providers: [
+        StatusBar,
+        SplashScreen,
+        {provide: ErrorHandler, useClass: IonicErrorHandler},
+        Globalization
+    ]
+})
+export class AppModule {
+
+constructor(platform: Platform, translate: TranslateService, private globalization: Globalization) {
+
+        platform.ready().then( () => {
+
+            translate.setDefaultLang(DEFAULT_LANGUAGE);
+
+            if ((<any>window).cordova) {
+                this.globalization.getPreferredLanguage().then( result => {
+                    translate.use(result.value.toLowerCase());
+                });
+            } else {
+                let browserLanguage = translate.getBrowserLang() || DEFAULT_LANGUAGE;
+                translate.use(browserLanguage.toLowerCase());
+            }
+
+        });
+
+    }
+
+}
+
+app.module.ts hosted with ? by GitHub
+
+
+en-us.json
+{
+	    "LAYOUT_APP_NOME": "Obesity Calculator",
+	    "HOME_PRIMEIRO_PASSO": "First we need to calculate your BMI",
+	    "HOME_LABEL_PESO": "Your weight (kg)",
+	    "HOME_LABEL_ALTURA": "Your height (m)",
+	    "HOME_BUTTON_CALCULAR": "Calculate"
+	}
+	
+pt-br.json 
+{
+	    "LAYOUT_APP_NOME": "cálculo de obesidade",
+	    "HOME_PRIMEIRO_PASSO": "Primeiro precisamos calcular seu IMC",
+	    "HOME_LABEL_PESO": "Seu peso (kg)",
+	    "HOME_LABEL_ALTURA": "Seu altura (m)",
+	    "HOME_BUTTON_CALCULAR": "Calcular"
+}
+
+home.html
+
+<div class="home-page">
+
+    <form novalidate #imc="ngForm" (ngSubmit)="calcularImc(imc.value)">
+        <p>{{ 'HOME_PRIMEIRO_PASSO' | translate }}</p>
+
+        <p>
+            <label for="peso">{{ 'HOME_LABEL_PESO' | translate }}</label>
+            <input type="tel" id="peso" name="peso" [(ngModel)]="peso" required>
+        </p>
+
+        <p>
+            <label for="altura">{{ 'HOME_LABEL_ALTURA' | translate }}</label>
+            <input type="tel" id="altura" name="altura" [(ngModel)]="altura" required>
+        </p>
+
+        <p>
+            <button type="submit" botao-padrao [disabled]="!imc.form.valid">
+                <span *ngIf="!showLoad else load">{{ 'HOME_BUTTON_CALCULAR' | translate }}</span>
+                <ng-template #load>
+                    <i class="fa fa-spin fa-circle-o-notch"></i>
+                </ng-template>
+            </button>
+        </p>
+    </form>
+
+</div>
+
+
+<div [translate]="'HELLO'"></div>
+
+view rawdirective-no-template.html hosted with ? by GitHub
+
+translate.get('HELLO').subscribe((res: string) => {
+    console.log(res);
+    //=> 'hello world'
+});
+
+view rawservice-no-typescript.ts hosted with ? by GitHub
+

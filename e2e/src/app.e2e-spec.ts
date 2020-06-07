@@ -8,10 +8,12 @@ describe('new App', () => {
   });
   describe('default screen', () => {
     beforeEach(() => {
-      page.navigateTo('/Inbox');
+      page.navigateTo('/home');
     });
-    it('should say Inbox', () => {
-      expect(page.getParagraphText()).toContain('Inbox');
+    it('should have a title saying Home', () => {
+      page.getPageOneTitleText().then(title => {
+        expect(title).toEqual('Home');
+      });
     });
   });
 });

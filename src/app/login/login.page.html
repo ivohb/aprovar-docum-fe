@@ -1,0 +1,61 @@
+<ion-header class="login-header">
+  <ion-title>{{ 'LOGIN' | translate }}</ion-title>
+</ion-header>
+
+<ion-content ion-padding  >
+
+  <div class="login-content">
+
+    <ion-card class="imagem200">
+      <img src="/assets/img/login.png" alt=""/>
+      <ion-card-header>
+        <ion-card-title class="titulo">
+          {{ 'IDENTIFICACAO' | translate }}
+        </ion-card-title>
+      </ion-card-header>
+    </ion-card>
+    
+    <div class="dados">
+
+      <ion-item>
+        <ion-label for="codigo" class="label" position="floating">
+          {{ 'CODIGO' | translate }} 
+        </ion-label>
+        <ion-input id="codigo" [(ngModel)]="login.codigo" required="true"
+          name="codigo" type="text" class="caixa" autofocus="ture" 
+          clear-input="ture" spellcheck="false" maxlength="15" >
+        </ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label for="Senha" class="label" position="floating" >
+          {{ 'SENHA' | translate }}
+        </ion-label>
+        <ion-input id="senha" [(ngModel)]="login.senha" name="senha"  
+          type="password" maxlength="15" required="true">
+        </ion-input>
+      </ion-item>
+  
+      <ion-list >    
+  
+        <ion-button class="button" (click)="entrar()" expand="block"> 
+          <ion-icon slot="start" name="log-in"></ion-icon>
+          {{ 'ENTRAR' | translate }}
+        </ion-button>
+    
+        <ion-button class="ion-text-capitalize link" (click)="help()" fill="clear"> 
+          <ion-icon slot="start" color="medium" name="book"></ion-icon>
+          {{ 'API_DOCUMENTACAO' | translate }}
+        </ion-button><br/>
+     
+        <ion-button class="ion-text-capitalize link" (click)="forgot()" fill="clear"> 
+          <ion-icon slot="start" color="medium" name="lock"></ion-icon>
+          {{ 'REC_SENHA' | translate }}
+        </ion-button><br/>
+    
+      </ion-list>
+        
+    </div>
+
+  </div>
+</ion-content>

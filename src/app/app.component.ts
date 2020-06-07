@@ -1,69 +1,62 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, Events, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { ProcessoDto } from 'src/models/processo.dto';
+//internacionalização
+import { TranslateService } from '@ngx-translate/core';
+import { LoadingService } from 'src/services/loading.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss']
 })
-export class AppComponent implements OnInit {
-  public selectedIndex = 0;
-  public appPages = [
-    {
-      title: 'Inbox',
-      url: '/folder/Inbox',
-      icon: 'mail'
-    },
-    {
-      title: 'Outbox',
-      url: '/folder/Outbox',
-      icon: 'paper-plane'
-    },
-    {
-      title: 'Favorites',
-      url: '/folder/Favorites',
-      icon: 'heart'
-    },
-    {
-      title: 'Archived',
-      url: '/folder/Archived',
-      icon: 'archive'
-    },
-    {
-      title: 'Trash',
-      url: '/folder/Trash',
-      icon: 'trash'
-    },
-    {
-      title: 'Spam',
-      url: '/folder/Spam',
-      icon: 'warning'
-    }
-  ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+export class AppComponent {
 
+  public appPages: ProcessoDto[] = [];
+ 
   constructor(
+    private loadingService: LoadingService,
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    public events: Events,
+    private translate: TranslateService,
+    private navCtrl: NavController
   ) {
     this.initializeApp();
+    events.subscribe('login:sucesso', (processos) => {      
+      this.appPages = processos;
+      console.log("Processos"+this.appPages);
+    });
+
   }
 
   initializeApp() {
+    this.loadingService.loadingPresent();
+    console.log('initializeApp');
+
+    //obtém o idioma do dispositivo
+    let language = this.translate.getBrowserLang();
+    console.log(language);
+    //coloca em uso o idioma do dispositivo
+    this.translate.use(language);
+    //se o arquivo de idima correspondente não for encontrado,
+    //utilizar o arquivo de idioma pt.json
+    this.translate.setDefaultLang("pt")
+
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+    this.loadingService.loadingDismiss();
   }
 
-  ngOnInit() {
-    const path = window.location.pathname.split('folder/')[1];
-    if (path !== undefined) {
-      this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
-    }
+  showPage(pagina: string) {
+    console.log("Pagina: "+pagina);
+    this.navCtrl.navigateBack(pagina); 
   }
+  
 }

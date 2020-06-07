@@ -1,0 +1,63 @@
+
+<ion-header class="page-header" >
+  <ion-buttons> 
+    <ion-button  (click)="voltar()" > 
+      <ion-icon  slot="start" name="arrow-back"></ion-icon>
+    </ion-button>
+    <ion-title>{{'FORGOT'|translate}}</ion-title>    
+  </ion-buttons>
+</ion-header>
+
+<ion-content ion-padding>
+  
+  <div class="page-content">
+
+    <ion-card class="imagem200">
+      <img src="/assets/img/forgot.jpg" alt=""/>
+      <ion-card-header>
+        <ion-card-title class="titulo">{{'REC_SENHA'|translate}}</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+
+      <!--Página com validação, deve-se declararar na tag form o grupo
+      definido no controler e a propriedade name troca-se por formControlName -->
+
+    <form [formGroup]="fg" class="dados"
+          (ngSubmit)="enviar(); $event.preventDefault()">
+    
+      <ion-item>
+        <ion-label class="label" position="floating">{{ 'CODIGO' | translate }} </ion-label>
+        <ion-select formControlName="codigo" class="caixa" required="true">
+          <ion-select-option *ngFor="let obj of usuarios" 
+            [value]="obj.codigo">{{obj.nome}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="label" position="floating">{{'CPF'|translate}}:</ion-label>
+        <ion-input formControlName="cpf" type="text" class="caixa" 
+          maxlength="11" clear-input="ture" spellcheck="false" autocomplete="on" >
+        </ion-input>
+      </ion-item>
+      
+      <!-- .dirty : se o campo já foi mexido-->
+      <!-- .errors : se alguma validação falhar-->
+
+      <ion-item>
+        <ion-label class="label" position="floating">{{'EMAIL'|translate}}:</ion-label>
+        <ion-input formControlName="email" type="email" class="caixa"  
+          maxlength="50" clear-input="ture" spellcheck="false" >
+        </ion-input>
+      </ion-item>
+  
+      <ion-button class="button" type="submit" [disabled]="fg.invalid" expand="block" >
+        <ion-icon slot="start" name="send"></ion-icon>{{'ENVIAR'|translate}}
+      </ion-button>
+
+      </form>
+
+  </div>
+
+</ion-content>
+
